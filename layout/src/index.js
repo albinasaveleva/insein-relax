@@ -1,5 +1,6 @@
 'use strict';
 
+import accordion from "./modules/accordion";
 import bodyListeners from "./modules/bodyListeners";
 import checkInputs from "./modules/checkInputs";
 import handlerMenu from "./modules/handlerMenu";
@@ -11,6 +12,7 @@ import handlerRepairTypes from "./modules/handlerRepairTypes";
 import reviewsSlider from "./modules/reviewsSlider";
 import scrollStart from "./modules/scrollStart";
 import transparencySlider from "./modules/transparencySlider";
+accordion();
 reviewsSlider();
 checkInputs();
 handlerRepairTypes();

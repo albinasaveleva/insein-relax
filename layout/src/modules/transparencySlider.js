@@ -1,7 +1,7 @@
 const transparencySlider = () => {
     const arrowLeft = document.querySelector('#transparency-arrow_left'),
-    arrowRight = document.querySelector('#transparency-arrow_right'),
-    slides = document.querySelectorAll('.transparency-item');
+        arrowRight = document.querySelector('#transparency-arrow_right'),
+        slides = document.querySelectorAll('.transparency-item');
     
     if (window.innerWidth <= 1090) {
         let currentSlide = 0;
