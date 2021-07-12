@@ -1,4 +1,4 @@
-const transparencySlider = (currentElem) => {
+const docsSlider = (currentElem) => {
     const arrowLeft = document.querySelector('#transparency_left'),
         arrowRight = document.querySelector('#transparency_right'),
         slides = document.querySelectorAll('.popup-transparency-slider__slide'),
@@ -44,4 +44,4 @@ const transparencySlider = (currentElem) => {
         nextSlide(slides, currentSlide);
     });
 };
-export default transparencySlider;
+export default docsSlider;

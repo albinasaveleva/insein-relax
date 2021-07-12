@@ -1,6 +1,6 @@
 import closePopup from "./closePopup";
 import openPopup from "./openPopup";
-import transparencySlider from "./transparencySlider";
+import docsSlider from "./docsSlider";
 
 const handlerPopupTransparency = () => {
     const popup = document.querySelector('.popup-transparency');
@@ -9,7 +9,7 @@ const handlerPopupTransparency = () => {
             let target = event.target;
             if (target.matches('.transparency-item__img')) {
                 openPopup(popup);
-                transparencySlider(index);
+                docsSlider(index);
             }
         });
     });
