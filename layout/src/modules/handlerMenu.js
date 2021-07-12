@@ -1,3 +1,5 @@
+import scrollIntiView from "./scrollIntoView";
+
 const handlerMenu = () => {
     const popupMenu = document.querySelector('.popup-menu');
     const openMenu = () => {
@@ -29,7 +31,7 @@ const handlerMenu = () => {
             } else if (target.matches('.menu-link')) {
                 if (target.closest('.popup-menu-nav__item')) {
                     event.preventDefault();
-                    console.log('link');
+                    scrollIntiView(target);
                     closeMenu();
                 } else if (target.closest('.link-list-menu')) {
                     event.preventDefault();
