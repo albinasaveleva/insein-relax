@@ -1,7 +1,7 @@
 'use strict';
 
 import bodyListeners from "./modules/bodyListeners";
-import checkPhone from "./modules/checkphone";
+import checkInputs from "./modules/checkInputs";
 import handlerMenu from "./modules/handlerMenu";
 import handlerPopupConsultation from "./modules/handlerPopupConsultation";
 import handlerPopupPrivacy from "./modules/handlerPopupPrivacy";
@@ -10,7 +10,7 @@ import handlerPopupTransparency from "./modules/handlerPopupTransparency";
 import handlerRepairTypes from "./modules/handlerRepairTypes";
 import scrollStart from "./modules/scrollStart";
 import transparencySlider from "./modules/transparencySlider";
-checkPhone();
+checkInputs();
 handlerRepairTypes();
 handlerPopupConsultation();
 transparencySlider();
