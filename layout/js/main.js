@@ -1,15 +1,23 @@
 'use strict';
 
 const handlerMenu = () => {
-    const popupMenu = document.querySelector('.popup-menu'),
-        popupDialogMenu = popupMenu.querySelector('.popup-dialog-menu');
+    const popupMenu = document.querySelector('.popup-menu');
     const openMenu = () => {
-            popupMenu.style.visibility = 'visible';
-            popupDialogMenu.style.right = '645px';
-        };
+        popupMenu.style.visibility = 'visible';
+        let style = document.createElement('style');
+        style.classList.add('openMenuStyles');
+        style.textContent = `
+            .popup-dialog-menu {
+                    -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                }`;
+        document.head.append(style);
+        // popupDialogMenu.style.transform = 'translate3d(0, 0, 0)';
+    };
     const closeMenu = () => {
-        popupMenu.style.visibility = 'hidden';
-        popupDialogMenu.style.right = '0';
+        popupMenu.style.visibility = '';
+        document.head.querySelector('.openMenuStyles').remove();
+        // popupDialogMenu.style.transform = '';
     };
 
     document.body.addEventListener('click', (event) => {
