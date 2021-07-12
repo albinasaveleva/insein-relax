@@ -1,3 +1,4 @@
+import handlerPopupRepairTypes from "./handlerPopupRepairTypes";
 import scrollIntiView from "./scrollIntoView";
 
 const handlerMenu = () => {
@@ -35,7 +36,6 @@ const handlerMenu = () => {
                     closeMenu();
                 } else if (target.closest('.link-list-menu')) {
                     event.preventDefault();
-                    console.log('link-list-menu ');
                     closeMenu();
                 }
             } else {
