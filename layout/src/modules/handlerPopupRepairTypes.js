@@ -14,6 +14,43 @@ const handlerPopupRepairTypes = () => {
         const title = document.querySelector('#switch-inner');
         title.textContent = text;
     };
+    const tabsSlider = () => {
+        const arrowLeft = document.querySelector('#nav-arrow-popup-repair_left'),
+            arrowRight = document.querySelector('#nav-arrow-popup-repair_right'),
+            slides = document.querySelectorAll('.popup-repair-types-nav__item');
+        let currentSlide = 0;
+
+        slides.forEach((slide, index) => {
+            if (index === currentSlide) {
+                return;
+            } else {
+                slide.style.display = 'none';
+            }
+        });
+        const prevSlide = (elem, index, ) => {
+            elem[index].style.display = 'none';
+        };
+        const nextSlide = (elem, index, ) => {
+            elem[index].style.display = '';
+        };
+        arrowLeft.addEventListener('click', () => {
+            prevSlide(slides, currentSlide);
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }  
+            nextSlide(slides, currentSlide);      
+        });
+        arrowRight.addEventListener('click', () => {
+            prevSlide(slides, currentSlide);
+            currentSlide++;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            nextSlide(slides, currentSlide);
+        });
+    }
+
     const popupTabs = () => {
         const tabs = document.querySelector('.nav-list-popup-repair').children, 
             tabsContent = document.querySelector('.popup-repair-types-content-table').children;
@@ -42,7 +79,6 @@ const handlerPopupRepairTypes = () => {
         });
         toggleTabContent(0);
     };
-
     const showContent = () => {
         const showNavContent = (navItem, navIndex) => {
             const contentTable = document.querySelector('.popup-repair-types-content-table');
@@ -85,6 +121,9 @@ const handlerPopupRepairTypes = () => {
                 showNavContent(item, index);
             });
             popupTabs();
+            if (window.innerWidth <= 1024) {
+                tabsSlider();
+            }
         };
         showNavList();
     };

@@ -33,4 +33,5 @@ scrollStart();
 window.addEventListener('resize', () => {
     transparencySlider();
     handlerRepairTypes();
+    handlerPopupRepairTypes();
 });
