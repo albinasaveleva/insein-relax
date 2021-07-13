@@ -78,10 +78,45 @@ const handlerRepairTypes = () => {
     const repairTypesSlider = () => {
         const arrowLeft = document.querySelector('#nav-arrow-repair-left_base'),
             arrowRight = document.querySelector('#nav-arrow-repair-right_base'),
-            slides = document.querySelectorAll('.repair-types-nav__item');
+            container = document.querySelector('.repair-types-nav'),
+            slides = document.querySelectorAll('.repair-types-nav__item'),
+            transformBlock = document.querySelector('.nav-list-repair');
         let transformX = 0,
-            maxLength = +getComputedStyle(slides[0]).width.slice(0, -2) * slides.length;
-        console.dir(maxLength);
+            maxLength = +getComputedStyle(transformBlock).width.slice(0, -2) - +getComputedStyle(container).width.slice(0, -2),
+            transformWidth = maxLength / slides.length;
+        console.log(transformWidth, maxLength);
+        const hiddenArrow = () => {
+            if (Math.abs(transformX) === maxLength) {
+                arrowLeft.style.display = 'none';
+            } else if (transformX === 0) {
+                arrowRight.style.display = 'none';
+            } else {
+                arrowLeft.style.display = '';
+                arrowRight.style.display = '';
+            }
+        };
+        hiddenArrow();
+
+        arrowLeft.addEventListener('click', () => {
+            if (Math.abs(transformX) < maxLength) {
+                transformX -= transformWidth;
+                if (Math.abs(transformX) > maxLength) {
+                    transformX = maxLength * -1;
+                }
+                transformBlock.style.transform = `translateX(${transformX}px)`;
+                hiddenArrow();
+            } 
+        });
+        arrowRight.addEventListener('click', () => {
+            if (transformX < 0) {
+                transformX += transformWidth;
+                if (transformX > 0) {
+                    transformX = 0;
+                }
+                transformBlock.style.transform = `translateX(${transformX}px)`;
+                hiddenArrow();
+            } 
+        });
     };
 
     repairTypesTabs();
