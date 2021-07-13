@@ -1,4 +1,4 @@
-const bodyListeners = () => {
 
-};
+const bodyListeners = () => {
+}
 export default bodyListeners;

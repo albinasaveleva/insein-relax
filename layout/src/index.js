@@ -3,6 +3,7 @@
 import accordion from "./modules/accordion";
 import bodyListeners from "./modules/bodyListeners";
 import checkInputs from "./modules/checkInputs";
+import contactsAccordion from "./modules/contactsAccordion";
 import handlerMenu from "./modules/handlerMenu";
 import handlerPopupConsultation from "./modules/handlerPopupConsultation";
 import handlerPopupPrivacy from "./modules/handlerPopupPrivacy";
@@ -13,6 +14,7 @@ import reviewsSlider from "./modules/reviewsSlider";
 import scrollStart from "./modules/scrollStart";
 import sendForm from "./modules/sendForm";
 import transparencySlider from "./modules/transparencySlider";
+contactsAccordion();
 sendForm();
 accordion();
 reviewsSlider();
