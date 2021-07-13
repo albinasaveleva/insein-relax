@@ -1,4 +1,3 @@
-import handlerPopupRepairTypes from "./handlerPopupRepairTypes";
 import scrollIntiView from "./scrollIntoView";
 
 const handlerMenu = () => {
