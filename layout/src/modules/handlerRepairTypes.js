@@ -84,7 +84,6 @@ const handlerRepairTypes = () => {
         let transformX = 0,
             maxLength = +getComputedStyle(transformBlock).width.slice(0, -2) - +getComputedStyle(container).width.slice(0, -2),
             transformWidth = maxLength / slides.length;
-        console.log(transformWidth, maxLength);
         const hiddenArrow = () => {
             if (Math.abs(transformX) === maxLength) {
                 arrowLeft.style.display = 'none';
