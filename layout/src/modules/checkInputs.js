@@ -52,6 +52,6 @@ const checkInputs = () => {
     };
     checkPhone();
     checkName();
-}
+};
 
 export default checkInputs;
