@@ -4,11 +4,16 @@ import openPopup from "./openPopup";
 const handlerPopupPortfolio = () => {
     const popup = document.querySelector('.popup-portfolio'),
         portfolioSlider = document.querySelector('.portfolio-slider'),
-        slidesFrame = portfolioSlider.querySelectorAll('.portfolio-slider__slide-frame'),
+        mobilePortfolioSlider = document.querySelector('.portfolio-slider-mobile'),        
         sliderCounter = document.querySelector('#popup-portfolio-counter'),
         currentSliderCounter = sliderCounter.querySelector('.slider-counter-content__current'),
         totalSliderCounter = sliderCounter.querySelector('.slider-counter-content__total');
-
+    let slidesFrame;
+    if (window.innerWidth > 575) {
+        slidesFrame = portfolioSlider.querySelectorAll('.portfolio-slider__slide-frame');
+    } else {
+        slidesFrame = mobilePortfolioSlider.querySelectorAll('.portfolio-slider__slide-frame');
+    }
     const texts = document.querySelectorAll('.popup-portfolio-text'),
         slides = document.querySelectorAll('.popup-portfolio-slider__slide');
 

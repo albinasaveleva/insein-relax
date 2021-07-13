@@ -7092,7 +7092,7 @@ div.wave-block:nth-child(17):after {
     position: absolute;
     top: 50%;
     margin-top: -8px;
-    z-index: 1;
+    z-index: 15;
     cursor: pointer;
 }
 
