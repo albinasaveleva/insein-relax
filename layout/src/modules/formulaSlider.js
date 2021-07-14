@@ -4,6 +4,17 @@ const formulaSlider = () => {
         slides = document.querySelectorAll('.formula-slider__slide');
     let currentSlide = 0;
 
+    slides[currentSlide].style.opacity = '1';
+
+    let style = document.createElement('style');
+    style.classList.add('formula-before-element-styles');
+    style.innerHTML = `
+        .formula-slider__slide::before {
+            z-index: 0;
+        }
+    `;
+    document.head.append(style);
+
     slides.forEach((slide, index) => {
         if (index === currentSlide) {
             return;
