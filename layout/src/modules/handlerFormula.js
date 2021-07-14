@@ -2,6 +2,16 @@ const handlerFormula = () => {
     const wrappers = document.querySelectorAll('.wrapper_small');
     let circles, popupes;
 
+    let style = document.createElement('style');
+    style.innerHTML = `
+        .formula-item-popup::before {
+            transform: rotate(180deg);
+        }
+        .formula-item-popup {
+            padding-top: 40px;
+        }
+    `;
+
     const checkPosition = (target) => {
         let targetPosition = {
             top: window.pageYOffset + target.getBoundingClientRect().top,
@@ -16,10 +26,10 @@ const handlerFormula = () => {
             // bottom: window.pageYOffset + document.documentElement.clientHeight
           };
         if (targetPosition.top < windowPosition.top) {
-            target.style.transform = 'rotate(180deg)';
-            target.style.top = '170px';
+            document.head.append(style);
+            target.style.top = '160px';
         } else {
-            target.style.transform = '';
+            style.remove();
             target.style.top = '';
         }
     };

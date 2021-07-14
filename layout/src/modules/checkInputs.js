@@ -43,9 +43,9 @@ const checkInputs = () => {
                             .toUpperCase()}${input.value
                             .slice(1)
                             .toLowerCase()}`;
-                        } else {
-                            input.value = input.value.replace(input.value, '');
-                        } 
+                    } else {
+                        input.value = input.value.replace(input.value, '');
+                    } 
                 }
             });
         });
