@@ -4,12 +4,16 @@ const portfolioSlider = () => {
             arrowRight = document.querySelector('#portfolio-arrow_right'),
             container = document.querySelector('.portfolio-slider'),
             slides = container.querySelectorAll('.portfolio-slider__slide-frame');
+
+        slides.forEach(slide => slide.style.transition = 'all 0.7s ease 0s');
+
         let transformX = 0,
             maxLength = (+getComputedStyle(slides[0]).width.slice(0, -2) * slides.length / 2) - +getComputedStyle(container).width.slice(0, -2),
             transformWidth = maxLength / slides.length;
         if (window.innerWidth < 900) {
             transformWidth = maxLength / slides.length / 2;
         }
+        
         const hiddenArrow = () => {
             if (Math.abs(transformX) === maxLength) {
                 arrowRight.style.display = 'none';
