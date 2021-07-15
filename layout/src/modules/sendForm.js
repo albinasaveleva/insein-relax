@@ -5,8 +5,7 @@ import openPopup from "./openPopup";
 import handlerPopupError from "./handlerPopupError";
 
 const sendForm = () => {
-    const errorMessage = 'Упс...Что-то пошло не так',
-        preloader = document.createElement('section'),
+    const preloader = document.createElement('section'),
         errorSection = document.createElement('section');
 
     preloader.insertAdjacentHTML('beforeend', `

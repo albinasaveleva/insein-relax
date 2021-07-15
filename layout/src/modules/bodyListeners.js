@@ -5,7 +5,7 @@ import openPopup from "./openPopup";
 import scrollIntoView from "./scrollIntoView";
 
 const bodyListeners = () => {
-    // console.log(document.querySelectorAll('.button_wide'))
+    // console.log(document.querySelectorAll('.title_block'))
 
     document.body.addEventListener('click', (event) => {
         let target = event.target;
@@ -43,6 +43,8 @@ const bodyListeners = () => {
         } else if (target.matches('.popup-consultation') ||
             (target.matches('.close') && target.closest('.popup-consultation'))) {
                 closePopup(document.querySelector('.popup-consultation'));
+        } else if (target.matches('.title_block')) {
+            target.classList.toggle('msg-active');
         } else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {
             event.preventDefault();
