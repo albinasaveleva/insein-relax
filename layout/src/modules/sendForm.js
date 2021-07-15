@@ -2,7 +2,7 @@ import clearForm from "./clearForm";
 // import handlerPopupThank from "./handlerPopupThank";
 import closePopup from "./closePopup";
 import openPopup from "./openPopup";
-import handlerPopupError from "./handlerPopupError";
+// import handlerPopupError from "./handlerPopupError";
 
 const sendForm = () => {
     const preloader = document.createElement('section'),
@@ -86,7 +86,7 @@ const sendForm = () => {
                         .catch((error) => {
                             loader.textContent = '';
                             loader.append(errorSection);
-                            handlerPopupError();
+                            // handlerPopupError();
                             clearForm(form);
                             console.log(error);
                         });

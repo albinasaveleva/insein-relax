@@ -53,6 +53,9 @@ const bodyListeners = () => {
         } else if (target.matches('.popup-thank') || 
             (target.matches('.close') && target.closest('.popup-thank'))) {
                 closePopup(document.querySelector('.popup-thank'));
+        } else if (target.matches('.popup-loader') || 
+            (target.matches('.close') && target.closest('.popup-loader'))) {
+                closePopup(document.querySelector('.popup-loader'));
         }
         else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {
