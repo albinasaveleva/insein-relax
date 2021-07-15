@@ -5,7 +5,7 @@ import openPopup from "./openPopup";
 import scrollIntoView from "./scrollIntoView";
 
 const bodyListeners = () => {
-    // console.log(document.querySelectorAll('.menu__icon'))
+    // console.log(document.querySelectorAll('.button_wide'))
 
     document.body.addEventListener('click', (event) => {
         let target = event.target;
@@ -38,6 +38,11 @@ const bodyListeners = () => {
             (target.matches('.close') && target.closest('.popup-repair-types'))) {
                 closePopup(document.querySelector('.popup-repair-types'));
                 handlerPopupRepairTypes();   
+        } else if (target.matches('.button_wide')) {
+            openPopup(document.querySelector('.popup-consultation'));
+        } else if (target.matches('.popup-consultation') ||
+            (target.matches('.close') && target.closest('.popup-consultation'))) {
+                closePopup(document.querySelector('.popup-consultation'));
         }
         else {console.log(target)};
     }) 

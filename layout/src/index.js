@@ -7,7 +7,7 @@ import contactsAccordion from "./modules/contactsAccordion";
 import formulaSlider from "./modules/formulaSlider";
 import handlerFormula from "./modules/handlerFormula";
 // import handlerMenu from "./modules/handlerMenu";
-import handlerPopupConsultation from "./modules/handlerPopupConsultation";
+// import handlerPopupConsultation from "./modules/handlerPopupConsultation";
 import handlerPopupPortfolio from "./modules/handlerPopupPortfolio";
 import handlerPopupPrivacy from "./modules/handlerPopupPrivacy";
 // import handlerPopupRepairTypes from "./modules/handlerPopupRepairTypes";
@@ -28,7 +28,7 @@ accordion();
 reviewsSlider();
 checkInputs();
 handlerRepairTypes();
-handlerPopupConsultation();
+// handlerPopupConsultation();
 transparencySlider();
 
 handlerPopupTransparency();
