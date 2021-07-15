@@ -13,14 +13,5 @@ const handlerPopupTransparency = () => {
             }
         });
     });
-    document.addEventListener('click', (event) => {
-        let target = event.target;
-        if (popup.style.visibility === 'visible') {
-            if (target.matches('.popup-transparency') || 
-            (target.matches('.close') && target.closest('.popup-transparency'))) {
-                closePopup(popup);
-            }
-        }
-    });
 };
 export default handlerPopupTransparency;

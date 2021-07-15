@@ -63,6 +63,9 @@ const bodyListeners = () => {
         } else if (target.matches('.popup-privacy') || 
             (target.matches('.close') && target.closest('.popup-privacy'))) {
                 closePopup(document.querySelector('.popup-privacy'));
+        } else if (target.matches('.popup-transparency') || 
+            (target.matches('.close') && target.closest('.popup-transparency'))) {
+                closePopup(document.querySelector('.popup-transparency'));
         }
         else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {
