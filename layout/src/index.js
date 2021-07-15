@@ -3,7 +3,7 @@
 import accordion from "./modules/accordion";
 import bodyListeners from "./modules/bodyListeners";
 import checkInputs from "./modules/checkInputs";
-import contactsAccordion from "./modules/contactsAccordion";
+// import contactsAccordion from "./modules/contactsAccordion";
 import formulaSlider from "./modules/formulaSlider";
 import handlerFormula from "./modules/handlerFormula";
 // import handlerMenu from "./modules/handlerMenu";
@@ -22,7 +22,7 @@ formulaSlider();
 handlerFormula();
 handlerPopupPortfolio();
 portfolioSlider();
-contactsAccordion();
+// contactsAccordion();
 sendForm();
 accordion();
 reviewsSlider();

@@ -5,7 +5,7 @@ import openPopup from "./openPopup";
 import scrollIntoView from "./scrollIntoView";
 
 const bodyListeners = () => {
-    // console.log(document.querySelectorAll('.title_block'))
+    // console.log(document.querySelectorAll('.header-contacts__phone-number')[1])
 
     document.body.addEventListener('click', (event) => {
         let target = event.target;
@@ -45,7 +45,13 @@ const bodyListeners = () => {
                 closePopup(document.querySelector('.popup-consultation'));
         } else if (target.matches('.title_block')) {
             target.classList.toggle('msg-active');
-        } else if (target.matches('.button-footer') ||
+        } else if (target.matches('.header-contacts__arrow') ||
+            target.closest('.header-contacts__arrow') ) {
+                document.querySelector('.header-contacts__arrow').classList.toggle('active');
+                document.querySelector('.header-contacts__phone-number-accord').classList.toggle('active');
+                document.querySelectorAll('.header-contacts__phone-number')[1].classList.toggle('active');
+        }
+        else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {
             event.preventDefault();
             scrollIntoView(document.querySelector('.button-footer').firstElementChild);
