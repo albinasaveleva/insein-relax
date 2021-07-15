@@ -1,4 +1,3 @@
-import closePopup from "./closePopup";
 import openPopup from "./openPopup";
 
 const handlerPopupPortfolio = () => {
@@ -81,15 +80,6 @@ const handlerPopupPortfolio = () => {
                 showContent(index);
             }
         });
-    });
-    document.addEventListener('click', (event) => {
-        let target = event.target;
-        if (popup.style.visibility === 'visible') {
-            if (target.matches('.popup-portfolio') ||
-            (target.matches('.close') && target.closest('.popup-portfolio'))) {
-                closePopup(popup);   
-            }
-        }
     });
 };
 export default handlerPopupPortfolio;
