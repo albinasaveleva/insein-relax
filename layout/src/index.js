@@ -10,7 +10,7 @@ import handlerFormula from "./modules/handlerFormula";
 // import handlerPopupConsultation from "./modules/handlerPopupConsultation";
 import handlerPopupPortfolio from "./modules/handlerPopupPortfolio";
 // import handlerPopupPrivacy from "./modules/handlerPopupPrivacy";
-// import handlerPopupRepairTypes from "./modules/handlerPopupRepairTypes";
+import handlerPopupRepairTypes from "./modules/handlerPopupRepairTypes";
 import handlerPopupTransparency from "./modules/handlerPopupTransparency";
 import handlerRepairTypes from "./modules/handlerRepairTypes";
 import portfolioSlider from "./modules/portfolioSlider";
@@ -41,6 +41,6 @@ bodyListeners();
 window.addEventListener('resize', () => {
     transparencySlider();
     // handlerRepairTypes();
-    // // handlerPopupRepairTypes();
+    handlerPopupRepairTypes();
     portfolioSlider();
 });
