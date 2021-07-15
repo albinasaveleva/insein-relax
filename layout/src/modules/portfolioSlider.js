@@ -114,12 +114,12 @@ const portfolioSlider = () => {
     } else {
         mobileSlider();
     }
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 575) {
-            desctopSlider();
-        } else {
-            mobileSlider();
-        }
-    });
+    // window.addEventListener('resize', () => {
+    //     if (window.innerWidth > 575) {
+    //         desctopSlider();
+    //     } else {
+    //         mobileSlider();
+    //     }
+    // });
 };
 export default portfolioSlider;

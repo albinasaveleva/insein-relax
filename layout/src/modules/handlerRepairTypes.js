@@ -116,6 +116,13 @@ const handlerRepairTypes = () => {
                 hiddenArrow();
             } 
         });
+        window.addEventListener('resize', ()=> {
+            transformBlock.style.transform = '';
+            transformX = 0;
+            arrowLeft.style.display = '';
+            arrowRight.style.display = '';
+            hiddenArrow();
+        });
     };
 
     repairTypesTabs();
@@ -123,11 +130,15 @@ const handlerRepairTypes = () => {
     if (window.innerWidth <= 1024) {
         repairTypesSlider();
     }
-    // window.addEventListener('resize', () => {
-    //     if (window.innerWidth <= 1024) {
-    //         repairTypesSlider();
-    //     }
-    // });
+    window.addEventListener('resize', () => {
+        // currentSlide = 0;
+        // currentCount.textContent = 1;
+        repairTypesTabs();
+        // repairSlider();
+        if (window.innerWidth <= 1024) {
+            repairTypesSlider();
+        }
+    });
     // if (window.innerWidth <= 1024) {
     //     repairTypesTabs();
     //     repairSlider();
