@@ -21,14 +21,12 @@ class Autorize {
             this.correctAutorize = true;
             this.clearForm(this.form);
             this.setCookie('correctAutorize', this.correctAutorize);
-            console.log('autorize');
-            window.location = 'http://127.0.0.1:5501/layout/admin/table.html';
+            window.location = window.location.href.replace(/index/, 'table' );
 
         } else {
             this.correctAutorize = false;
             this.clearForm(this.form);
             this.setCookie('correctAutorize', this.correctAutorize);
-            console.log('no autorize');
 
             if (this.login.value !== this.autorizeCookie.login) {
                 this.addError(this.login.nextElementSibling, 'inline');
@@ -48,9 +46,7 @@ class Autorize {
     }
     clearError(error) {
         error.style.display = '';
-    }
-
-    
+    }   
     setCookie(key, value, maxAge, path, domain, secure) {
         let cookieStr = `${encodeURI(key)}=${encodeURI(value)}`;
     
@@ -72,10 +68,6 @@ class Autorize {
         ));
         return matches ? decodeURI(matches[1]) : undefined;
     }
-    // checkCookie(name) {
-    //     let regExp = new RegExp(`${name}(?=\=)`);
-    //     return document.cookie.split('; ').some(item => regExp.test(item));
-    // }
     getAutorizeCookie() {
         if (this.getCookie('login')) {
             this.autorizeCookie.login = this.getCookie('login');
