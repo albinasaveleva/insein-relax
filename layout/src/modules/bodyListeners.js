@@ -1,5 +1,6 @@
 import closePopup from "./closePopup";
 import handlerMenu from "./handlerMenu";
+import handlerPopupRepairTypes from "./handlerPopupRepairTypes";
 import openPopup from "./openPopup";
 import scrollIntoView from "./scrollIntoView";
 
@@ -26,7 +27,17 @@ const bodyListeners = () => {
                 event.preventDefault();
                 closePopup(document.querySelector('.popup-menu'));
                 handlerMenu();
-            }
+                openPopup(document.querySelector('.popup-repair-types'));
+                handlerPopupRepairTypes();
+            } 
+        } else if (target.tagName.toLowerCase() === 'a' &&
+            target.textContent.trim() === 'Полный список услуг и цен') {
+                openPopup(document.querySelector('.popup-repair-types'));
+                handlerPopupRepairTypes();
+        } else if (target.matches('.popup-repair-types') ||
+            (target.matches('.close') && target.closest('.popup-repair-types'))) {
+                closePopup(document.querySelector('.popup-repair-types'));
+                handlerPopupRepairTypes();   
         }
         else {console.log(target)};
     }) 
