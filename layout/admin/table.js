@@ -2,8 +2,8 @@
 
 class Administration {
     constructor() {
+        this.fetchUrl = 'http://localhost:3000/api/items';
         this.repairList = [];
-        // this.repairTypes = new Set();
         this.form = document.querySelector('form');
         this.modal = document.querySelector('#modal');
         this.inputs = this.form.querySelectorAll('input');
@@ -25,7 +25,7 @@ class Administration {
         return matches ? decodeURI(matches[1]) : undefined;
     }
     getRepairs() {
-        return fetch('http://localhost:3000/api/items')
+        return fetch(this.fetchUrl)
             .then(response => {
                 if (response.status !== 200) {
                     throw new Error('status network not 200');
@@ -47,17 +47,19 @@ class Administration {
     showRepairTypes() {
         const select = document.querySelector('#typeItem');
         this.clearRepaitTypes();
+        let fragment = new DocumentFragment();
         let option = document.createElement('option');
         option.value = 'Все услуги';
         option.textContent = 'Все услуги';
-        select.append(option);
+        fragment.append(option);
         [...this.repairTypes].forEach((item) => {
             let option = document.createElement('option');
             option.value = item;
             option.textContent = item;
-            select.append(option);
+            fragment.append(option);
             this.showRepairs(item);
         });
+        select.append(fragment);
         this.filterRepairs();
     }
     clearRepaitTypes() {
@@ -65,6 +67,7 @@ class Administration {
     }
     showRepairs(typeItem) {
         const tbody = document.querySelector('#tbody');
+        let fragment = new DocumentFragment();
         this.repairList.forEach((item) => {
             if (item.type === typeItem) {
                 let tr = document.createElement('tr');
@@ -84,9 +87,10 @@ class Administration {
                         </div>
                     </td>
                 `;
-                tbody.append(tr);
+                fragment.append(tr);
             }
-        });       
+        });
+        tbody.append(fragment);       
     }
     clearRepairList() {
         document.querySelector('#tbody').textContent = '';
@@ -103,7 +107,7 @@ class Administration {
             this.showRepairs(filter.value);
         });
     }
-    addRepair(form) {
+    addRepair() {
         if ([...this.inputs].every(input => input.value.trim())) {
             let body = {};
             this.inputs.forEach(input => {
@@ -129,7 +133,7 @@ class Administration {
                 })
                 .catch(error => console.log(error));
         } else {
-            form.querySelector('.button-ui_firm').style.opacity = '0.5';
+            this.form.querySelector('.button-ui_firm').style.opacity = '0.5';
         }
     }
     editRepair() {
@@ -288,13 +292,13 @@ class Administration {
                 this.toggleModal('flex');
             } else if (target.matches('.icon__close') || target.matches('.modal__overlay')) {
                 this.toggleModal('');
-                    this.modal.removeAttribute('data-type-submit');
+                this.modal.removeAttribute('data-type-submit');
                 this.clearForm();
             } else if (target.matches('.button-ui_firm') || target.closest('.button-ui_firm')) {
                 if (this.modal.dataset.typeSubmit) {
                     this.editRepair();
                 } else {
-                    this.addRepair(this.form);
+                    this.addRepair();
                 }
             } else if (target.matches('.cancel-button') || target.closest('.cancel-button')) {
                 this.cancel();
@@ -304,8 +308,6 @@ class Administration {
                 this.showEditModal(target);
             } else if (target.matches('.action-remove') || target.closest('.action-remove')) {
                 this.removeRepair(target);
-            } else {
-                console.log(target)
             }
         });
     }
