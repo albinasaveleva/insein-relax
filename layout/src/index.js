@@ -39,8 +39,8 @@ bodyListeners();
 // scrollStart();
 
 window.addEventListener('resize', () => {
-    transparencySlider();
-    handlerRepairTypes();
-    // handlerPopupRepairTypes();
-    portfolioSlider();
+    // transparencySlider();
+    // handlerRepairTypes();
+    // // handlerPopupRepairTypes();
+    // portfolioSlider();
 });

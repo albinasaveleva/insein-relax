@@ -69,13 +69,11 @@ const bodyListeners = () => {
         } else if (target.matches('.popup-portfolio') ||
             (target.matches('.close') && target.closest('.popup-portfolio'))) {
                 closePopup(document.querySelector('.popup-portfolio'));
-        }
-        else if (target.matches('.button-footer') ||
+        } else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {
             event.preventDefault();
             scrollIntoView(document.querySelector('.button-footer').firstElementChild);
         }
-        else {console.log(target)};
-    }) 
-}   
+    }) ;
+};  
 export default bodyListeners;

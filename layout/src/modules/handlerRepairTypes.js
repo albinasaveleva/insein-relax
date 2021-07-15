@@ -123,5 +123,30 @@ const handlerRepairTypes = () => {
     if (window.innerWidth <= 1024) {
         repairTypesSlider();
     }
+    // window.addEventListener('resize', () => {
+    //     if (window.innerWidth <= 1024) {
+    //         repairTypesSlider();
+    //     }
+    // });
+    // if (window.innerWidth <= 1024) {
+    //     repairTypesTabs();
+    //     repairSlider();
+    //     repairTypesSlider();
+    // } else {
+    //     repairTypesTabs();
+    //     repairSlider();
+    // }
+    // window.addEventListener('resize', () => {
+    //     currentSlide = 0;
+    //     currentCount.textContent = 1;
+    //     if (window.innerWidth <= 1024) {
+    //         repairTypesTabs();
+    //         repairSlider();
+    //         repairTypesSlider();
+    //     } else {
+    //         repairTypesTabs();
+    //         repairSlider();
+    //     }
+    // });
 };
 export default handlerRepairTypes;

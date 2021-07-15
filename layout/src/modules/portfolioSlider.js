@@ -5,7 +5,7 @@ const portfolioSlider = () => {
             container = document.querySelector('.portfolio-slider'),
             slides = container.querySelectorAll('.portfolio-slider__slide-frame');
 
-        slides.forEach(slide => slide.style.transition = 'all 0.7s ease 0s');
+        slides.forEach(slide => slide.style.transition = 'all 1s ease 0s');
 
         let transformX = 0,
             maxLength = (+getComputedStyle(slides[0]).width.slice(0, -2) * slides.length / 2) - +getComputedStyle(container).width.slice(0, -2),
@@ -45,6 +45,14 @@ const portfolioSlider = () => {
                 [...slides].every(slide => slide.style.transform = `translateX(${transformX}px)`);
                 hiddenArrow();
             } 
+        });
+
+        window.addEventListener('resize', () => {
+            slides.forEach(slide => slide.style.transform = ``);
+            arrowRight.style.display = '';
+            arrowLeft.style.display = '';
+            hiddenArrow();
+            transformX = 0;
         });
     };
     const mobileSlider = () => {
@@ -106,6 +114,12 @@ const portfolioSlider = () => {
     } else {
         mobileSlider();
     }
-
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 575) {
+            desctopSlider();
+        } else {
+            mobileSlider();
+        }
+    });
 };
 export default portfolioSlider;
