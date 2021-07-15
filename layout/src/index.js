@@ -15,7 +15,7 @@ import handlerPopupTransparency from "./modules/handlerPopupTransparency";
 import handlerRepairTypes from "./modules/handlerRepairTypes";
 import portfolioSlider from "./modules/portfolioSlider";
 import reviewsSlider from "./modules/reviewsSlider";
-import scrollStart from "./modules/scrollStart";
+// import scrollStart from "./modules/scrollStart";
 import sendForm from "./modules/sendForm";
 import transparencySlider from "./modules/transparencySlider";
 formulaSlider();
@@ -36,7 +36,7 @@ handlerPopupPrivacy();
 // handlerPopupRepairTypes();
 bodyListeners();
 // handlerMenu();
-scrollStart();
+// scrollStart();
 
 window.addEventListener('resize', () => {
     transparencySlider();

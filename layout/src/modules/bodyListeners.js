@@ -43,6 +43,10 @@ const bodyListeners = () => {
         } else if (target.matches('.popup-consultation') ||
             (target.matches('.close') && target.closest('.popup-consultation'))) {
                 closePopup(document.querySelector('.popup-consultation'));
+        } else if (target.matches('.button-footer') ||
+                target.closest('.button-footer')) {
+            event.preventDefault();
+            scrollIntoView(document.querySelector('.button-footer').firstElementChild);
         }
         else {console.log(target)};
     }) 
