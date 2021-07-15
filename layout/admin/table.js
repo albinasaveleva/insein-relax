@@ -3,8 +3,9 @@
 class Administration {
     constructor() {
         this.repairList = [];
-        this.repairTypes = new Set();
+        // this.repairTypes = new Set();
         this.form = document.querySelector('form');
+        this.modal = document.querySelector('#modal');
         this.inputs = this.form.querySelectorAll('input');
     }
     init() {
@@ -13,9 +14,9 @@ class Administration {
             this.checkInputs();
             this.listeners();
         } 
-        // else {
-        //     window.location = 'http://127.0.0.1:5501/layout/admin/index.html';
-        // }
+        else {
+            window.location = window.location.href.replace(/table/, 'index' );
+        }
     }
     getCookie(name) {
         let matches = document.cookie.match(new RegExp(
@@ -34,12 +35,12 @@ class Administration {
             })
             .then(result => {
                 this.repairList = result;
+                this.repairTypes = new Set();
                 result.forEach(element => {
                     this.repairTypes.add(element.type);
                 });
                 this.clearRepairList();
                 this.showRepairTypes();
-                this.showRepairs();
             })
             .catch(error => console.log(error));
     }
@@ -50,12 +51,12 @@ class Administration {
         option.value = 'Все услуги';
         option.textContent = 'Все услуги';
         select.append(option);
-        [...this.repairTypes].forEach((item, index) => {
+        [...this.repairTypes].forEach((item) => {
             let option = document.createElement('option');
             option.value = item;
             option.textContent = item;
             select.append(option);
-            this.showRepairs(item, index);
+            this.showRepairs(item);
         });
         this.filterRepairs();
     }
@@ -116,60 +117,103 @@ class Administration {
                     body.cost = input.value;
                 }
             });
-            this.postData('http://localhost:3000/api/items', body)
+            this.postData('http://localhost:3000/api/items', body, 'POST')
                 .then(response => {
-                    if (response.status !== 200) {
-                        throw new Error('status network not 200');
-                    } else {
-                        response.json();
-                    }
+                    if (response.status !== 201) {
+                        throw new Error('status network not 201');
+                    } 
                 })
-                .then(result => {
-                    // this.repairList = result;
-                    console.log(result);
-                    // result.forEach(element => {
-                    //     this.repairTypes.add(element.type);
-                    // });
-                    // this.clearRepairList();
-                    // this.showRepairTypes();
-                    // this.showRepairs();
+                .then(() => {
+                    this.getRepairs();
+                    this.toggleModal('');
                 })
                 .catch(error => console.log(error));
-            // this.clearForm(this.form);
         } else {
             form.querySelector('.button-ui_firm').style.opacity = '0.5';
         }
     }
     editRepair() {
-        console.log('edit')
+        let body = {};
+        this.inputs.forEach(input => {
+            if (input.matches('#type')) {
+                body.type = input.value;
+            } else if (input.matches('#name')) {
+                body.name = input.value;
+            } else if (input.matches('#units')) {
+                body.units = input.value;
+            } else if (input.matches('#cost')) {
+                body.cost = input.value;
+            }
+        });
+
+        this.postData(`http://localhost:3000/api/items/${this.modal.dataset.idItem}`, body, 'PATCH')
+            .then(response => {
+                if (response.status !== 200) {
+                    throw new Error('status network not 200');
+                } 
+            })
+            .then(() => {
+                this.getRepairs();
+                this.toggleModal('');
+                this.cancel();
+                this.modal.querySelector('h3').textContent = 'Добавение новой услуги';
+            })
+            .catch(error => console.log(error));
+
+    }
+    showEditModal(item) {
+        this.modal.setAttribute('data-type-submit', 'edit');
+        while (!item.matches('.table__row')) {
+            item = item.parentElement;
+        }
+        this.inputs.forEach(input => {
+            if (input.matches('#type')) {
+                input.value = item.querySelector('.table-type').textContent;
+            } else if (input.matches('#name')) {
+                input.value = item.querySelector('.table-name').textContent;
+            } else if (input.matches('#units')) {
+                input.value = item.querySelector('.table-units').textContent;
+            } else if (input.matches('#cost')) {
+                input.value = item.querySelector('.table-cost').textContent;
+            }
+        });
+        this.modal.setAttribute('data-id-item', `${item.querySelector('.table__id').textContent}`);
+        this.toggleModal('flex');
+    }
+    hideEditModal() {
+        this.modal.querySelector('h3').textContent = 'Добавение новой услуги';
+        this.modal.removeAttribute('data-id-item');
+        this.modal.removeAttribute('data-type-submit');
     }
     removeRepair(item) {
         while (!item.matches('.table__row')) {
             item = item.parentElement;
         }
-        this.deleteData(`http://localhost:3000/api/items/${item.firstElementChild.textContent}`)
+        this.deleteData(`http://localhost:3000/api/items/${item.querySelector('.table__id').textContent}`)
             .then(response => {
-                console.log(response);
                 if (response.status !== 200) {
                     throw new Error('status network not 200');
-                } else {
-                    response.json();
                 }
             })
             .then(() => {
-                console.log('Я не перезагрузился');
                 this.getRepairs();
-                console.log('Я перезагрузился');
             })
             .catch(error => console.log(error));
-
     }
     clearForm() {
         this.inputs.forEach(input => input.value = '');
     }
+    cancel() {
+        this.clearForm();
+        this.hideEditModal();
+    }
     toggleModal(style) {
-        const modal = document.querySelector('#modal');
-        modal.style.display = style;
+        if (this.modal.dataset.typeSubmit) {
+            this.modal.querySelector('h3').textContent = 'Изменение услуги';
+        } else {
+            this.modal.querySelector('h3').textContent = 'Добавение новой услуги';
+        }
+        this.modal.style.display = style;
     }
     checkInputs() {
         const checkInput = (item, regExp) => {
@@ -244,24 +288,30 @@ class Administration {
                 this.toggleModal('flex');
             } else if (target.matches('.icon__close') || target.matches('.modal__overlay')) {
                 this.toggleModal('');
+                    this.modal.removeAttribute('data-type-submit');
                 this.clearForm();
             } else if (target.matches('.button-ui_firm') || target.closest('.button-ui_firm')) {
-                event.preventDefault();
-                this.addRepair(this.form);
+                if (this.modal.dataset.typeSubmit) {
+                    this.editRepair();
+                } else {
+                    this.addRepair(this.form);
+                }
             } else if (target.matches('.cancel-button') || target.closest('.cancel-button')) {
-                this.clearForm();
+                this.cancel();
+                this.toggleModal('');
+                this.hideEditModal();
             } else if (target.matches('.action-change') || target.closest('.action-change')) {
-                this.editRepair();
+                this.showEditModal(target);
             } else if (target.matches('.action-remove') || target.closest('.action-remove')) {
-                event.preventDefault();
                 this.removeRepair(target);
+            } else {
+                console.log(target)
             }
         });
-        // this.form.addEventListener('submit', event => event.preventDefault());
     }
-    postData(url, body) {
+    postData(url, body, method) {
         return fetch(url, {
-            method: 'POST',
+            method: method,
             headers: {
                 'Content-Type': 'application/json'
             },
