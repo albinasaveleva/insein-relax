@@ -56,6 +56,13 @@ const bodyListeners = () => {
         } else if (target.matches('.popup-loader') || 
             (target.matches('.close') && target.closest('.popup-loader'))) {
                 closePopup(document.querySelector('.popup-loader'));
+        } else if (target.matches('.link-privacy') && 
+            (target.textContent.trim() === 'политикой конфиденциальности' ||
+            target.textContent.trim() === 'Политика конфиденциальности')) {
+                openPopup(document.querySelector('.popup-privacy'));
+        } else if (target.matches('.popup-privacy') || 
+            (target.matches('.close') && target.closest('.popup-privacy'))) {
+                closePopup(document.querySelector('.popup-privacy'));
         }
         else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {

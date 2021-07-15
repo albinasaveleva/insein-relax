@@ -9,7 +9,7 @@ import handlerFormula from "./modules/handlerFormula";
 // import handlerMenu from "./modules/handlerMenu";
 // import handlerPopupConsultation from "./modules/handlerPopupConsultation";
 import handlerPopupPortfolio from "./modules/handlerPopupPortfolio";
-import handlerPopupPrivacy from "./modules/handlerPopupPrivacy";
+// import handlerPopupPrivacy from "./modules/handlerPopupPrivacy";
 // import handlerPopupRepairTypes from "./modules/handlerPopupRepairTypes";
 import handlerPopupTransparency from "./modules/handlerPopupTransparency";
 import handlerRepairTypes from "./modules/handlerRepairTypes";
@@ -32,7 +32,7 @@ handlerRepairTypes();
 transparencySlider();
 
 handlerPopupTransparency();
-handlerPopupPrivacy();
+// handlerPopupPrivacy();
 // handlerPopupRepairTypes();
 bodyListeners();
 // handlerMenu();
