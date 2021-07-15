@@ -77,8 +77,8 @@ class Autorize {
         }
     }
     init() {
-        let login = 'testLogin',
-            password = 'testPassword';
+        let login = 'testLogin',//login для входа
+            password = 'testPassword';//password для входа
             
         this.setCookie('login', login);
         this.setCookie('password', password);
