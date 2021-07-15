@@ -1,5 +1,5 @@
 import clearForm from "./clearForm";
-import handlerPopupThank from "./handlerPopupThank";
+// import handlerPopupThank from "./handlerPopupThank";
 import closePopup from "./closePopup";
 import openPopup from "./openPopup";
 import handlerPopupError from "./handlerPopupError";
@@ -77,7 +77,7 @@ const sendForm = () => {
                                 throw new Error('status network not 200');
                             }
                             closePopup(loader);
-                            handlerPopupThank();
+                            // handlerPopupThank();
                             clearForm(form);
                             if (document.querySelector('.popup-consultation').style.visibility === 'visible') {
                                 closePopup(document.querySelector('.popup-consultation')); 

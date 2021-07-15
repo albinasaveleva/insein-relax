@@ -50,6 +50,9 @@ const bodyListeners = () => {
                 document.querySelector('.header-contacts__arrow').classList.toggle('active');
                 document.querySelector('.header-contacts__phone-number-accord').classList.toggle('active');
                 document.querySelectorAll('.header-contacts__phone-number')[1].classList.toggle('active');
+        } else if (target.matches('.popup-thank') || 
+            (target.matches('.close') && target.closest('.popup-thank'))) {
+                closePopup(document.querySelector('.popup-thank'));
         }
         else if (target.matches('.button-footer') ||
                 target.closest('.button-footer')) {
