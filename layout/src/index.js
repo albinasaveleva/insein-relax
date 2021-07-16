@@ -39,7 +39,7 @@ bodyListeners();
 // scrollStart();
 
 window.addEventListener('resize', () => {
-    transparencySlider();
+    // transparencySlider();
     // handlerRepairTypes();
     handlerPopupRepairTypes();
     portfolioSlider();

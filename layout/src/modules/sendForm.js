@@ -77,6 +77,7 @@ const sendForm = () => {
                                 throw new Error('status network not 200');
                             }
                             closePopup(loader);
+                            openPopup(document.querySelector('.popup-thank'));
                             // handlerPopupThank();
                             clearForm(form);
                             if (document.querySelector('.popup-consultation').style.visibility === 'visible') {
