@@ -4,6 +4,9 @@ const handlerFormula = () => {
 
     let style = document.createElement('style');
     style.innerHTML = `
+        .wrapper_small.mobile-hide.tablet-hide .row {
+            z-index: 100;
+        }
         .formula-item-popup::before {
             transform: rotate(180deg);
         }
@@ -62,34 +65,34 @@ const handlerFormula = () => {
             }
          }
     })
-    document.querySelector('#formula').addEventListener('mouseout', event => {
-        let target = event.target;
-        if (target.closest('.formula-item__icon')) {
-            if (target.closest('.formula-slider__slide')) {
-                target = target.parentElement;
-                circles = wrappers[1].querySelectorAll('.formula-item__icon');
-                popupes = wrappers[1].querySelectorAll('.formula-item-popup');
-                circles.forEach((circle, index) => {
-                    if (circle === target) {
-                        checkPosition(popupes[index]);
-                        popupes[index].style.visibility = '';
-                        popupes[index].style.opacity = '';
-                    }
-                });
+    // document.querySelector('#formula').addEventListener('mouseout', event => {
+    //     let target = event.target;
+    //     if (target.closest('.formula-item__icon')) {
+    //         if (target.closest('.formula-slider__slide')) {
+    //             target = target.parentElement;
+    //             circles = wrappers[1].querySelectorAll('.formula-item__icon');
+    //             popupes = wrappers[1].querySelectorAll('.formula-item-popup');
+    //             circles.forEach((circle, index) => {
+    //                 if (circle === target) {
+    //                     checkPosition(popupes[index]);
+    //                     popupes[index].style.visibility = '';
+    //                     popupes[index].style.opacity = '';
+    //                 }
+    //             });
 
-            } else {
-                target = target.parentElement;
-                circles = wrappers[0].querySelectorAll('.formula-item__icon');
-                popupes = wrappers[0].querySelectorAll('.formula-item-popup');
-                circles.forEach((circle, index) => {
-                    if (circle === target) {
-                        checkPosition(popupes[index]);
-                        popupes[index].style.visibility = '';
-                        popupes[index].style.opacity = '';
-                    }
-                });
-            }
-         }
-    })
+    //         } else {
+    //             target = target.parentElement;
+    //             circles = wrappers[0].querySelectorAll('.formula-item__icon');
+    //             popupes = wrappers[0].querySelectorAll('.formula-item-popup');
+    //             circles.forEach((circle, index) => {
+    //                 if (circle === target) {
+    //                     checkPosition(popupes[index]);
+    //                     popupes[index].style.visibility = '';
+    //                     popupes[index].style.opacity = '';
+    //                 }
+    //             });
+    //         }
+    //      }
+    // })
 }
 export default handlerFormula;
