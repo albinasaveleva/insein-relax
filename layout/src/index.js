@@ -24,7 +24,7 @@ handlerPopupPortfolio();
 portfolioSlider();
 // contactsAccordion();
 sendForm();
-accordion();
+// accordion();
 reviewsSlider();
 checkInputs();
 handlerRepairTypes();

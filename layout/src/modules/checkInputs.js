@@ -46,6 +46,9 @@ const checkInputs = () => {
                     } else {
                         input.value = input.value.replace(input.value, '');
                     } 
+                    if (!/^.{2,}$/i.test(input.value)) {
+                        input.value = input.value.replace(input.value, '');
+                    }
                 }
             });
         });

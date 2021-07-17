@@ -28,13 +28,11 @@ const handlerFormula = () => {
             // right: window.pageXOffset + document.documentElement.clientWidth,
             // bottom: window.pageYOffset + document.documentElement.clientHeight
           };
+
         if (targetPosition.top < windowPosition.top) {
             document.head.append(style);
             target.style.top = '160px';
-        } else {
-            style.remove();
-            target.style.top = '';
-        }
+        } 
     };
 
     document.querySelector('#formula').addEventListener('mouseover', event => {
@@ -46,6 +44,7 @@ const handlerFormula = () => {
                 popupes = wrappers[1].querySelectorAll('.formula-item-popup');
                 circles.forEach((circle, index) => {
                     if (circle === target) {
+                        checkPosition(popupes[index]);
                         popupes[index].style.visibility = 'visible';
                         popupes[index].style.opacity = '1';
                     }
@@ -81,9 +80,10 @@ const handlerFormula = () => {
                 popupes = wrappers[1].querySelectorAll('.formula-item-popup');
                 circles.forEach((circle, index) => {
                     if (circle === target) {
-                        checkPosition(popupes[index]);
                         popupes[index].style.visibility = '';
                         popupes[index].style.opacity = '';
+                        popupes[index].style.top = '';
+                        style.remove();
                     }
                 });
 
@@ -93,9 +93,10 @@ const handlerFormula = () => {
                 popupes = wrappers[0].querySelectorAll('.formula-item-popup');
                 circles.forEach((circle, index) => {
                     if (circle === target) {
-                        checkPosition(popupes[index]);
                         popupes[index].style.visibility = '';
                         popupes[index].style.opacity = '';
+                        popupes[index].style.top = '';
+                        style.remove();
                     }
                 });
             }

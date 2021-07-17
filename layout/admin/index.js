@@ -21,8 +21,11 @@ class Autorize {
             this.correctAutorize = true;
             this.clearForm(this.form);
             this.setCookie('correctAutorize', this.correctAutorize);
-            window.location = window.location.href.replace(/index/, 'table' );
-
+            if (/\index.html/.test(window.location)) {
+                window.location = window.location.href.replace(/index/, 'table' );
+            } else {
+                window.location = `${window.location.href}table.html`;
+            }
         } else {
             this.correctAutorize = false;
             this.clearForm(this.form);
@@ -77,6 +80,9 @@ class Autorize {
         }
     }
     init() {
+        if (window.location) {
+            console.log(/\.html/.test(window.location))
+        }
         let login = 'testLogin',//login для входа
             password = 'testPassword';//password для входа
             
