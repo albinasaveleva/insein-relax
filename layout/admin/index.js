@@ -80,9 +80,6 @@ class Autorize {
         }
     }
     init() {
-        if (window.location) {
-            console.log(/\.html/.test(window.location))
-        }
         let login = 'testLogin',//login для входа
             password = 'testPassword';//password для входа
             
